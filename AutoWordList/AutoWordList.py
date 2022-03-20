@@ -75,19 +75,25 @@ search_depth = args.depth
 sites = args.sites
 if len(query) != 0:
 
-
+    #print("Input:",query,"Depth:",search_depth)
     print("search term:",query,"\n# of sites:",sites,"\nwords/site:",search_depth)
     common_words = ['said','was','are','&','is','the', 'be', 'to', 'of', 'and', 'a', 'in', 'that', 'have', 'I', 'it', 'for', 'not', 'on', 'with', 'he', 'as', 'you', 'do', 'at', 'this', 'but', 'his', 'by', 'from', 'they', 'we', 'say', 'her', 'she', 'or', 'an', 'will', 'my', 'one', 'all', 'would', 'there', 'their', 'what', 'so', 'up', 'out', 'if', 'about', 'who', 'get', 'which', 'go', 'me', 'when', 'make', 'can', 'like', 'time', 'no', 'just', 'him', 'know', 'take', 'people', 'into', 'year', 'your', 'good', 'some', 'could', 'them', 'see', 'other', 'than', 'then', 'now', 'look', 'only', 'come', 'its', 'over', 'think', 'also', 'back', 'after', 'use', 'two', 'how', 'our', 'work', 'first', 'well', 'way', 'even', 'new', 'want', 'because', 'any', 'these', 'give', 'day', 'most', 'us']
-    special_characters = ["–","!","\"","@","(",")","#","$","%","^","-"," ","+","?","_","=",",","<",">","/","."," ",":","•","|"]
+    special_characters = ["–","!","\"","@","(",")","#","$","%","^","-","�","+","?","_","=",",","<",">","/",".","�",":","•","|"]
     out_words = []
     out_word_nodup = []
 
 
 
+
     site_list = google()
+    #print(site_list)
     
     for i in progressBar(site_list, prefix = 'Progress:', suffix = 'Complete', length = 50):
-
+    # Do stuff...
+        
+    #for i in site_list:
+        #print(i)
+        
         resp = req.get(i)
         soup = BeautifulSoup(resp.text, 'html.parser')
         # get text
@@ -130,12 +136,3 @@ if len(query) != 0:
     out_word_nodup.sort()
     for i in out_word_nodup:
         print(i)
-else:
-    print("No keyword was entered.") 
-            
-
-
-
-
-
-        
